@@ -1,0 +1,42 @@
+body {
+    font-family: 'Roboto', sans-serif; 
+}
+
+.content {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    width: 90%;
+    margin: 0 auto; 
+} 
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 20px; 
+    content: ""; 
+}
+
+.legend {
+    margin: 0 30px; 
+    border-right: 2px solid black;
+}
+
+.title {
+    font-size: 70px; 
+    font-weight: 100; 
+    width: 75%;
+    text-align: center; 
+    margin:  40px 0 20px 0; 
+} 
+
+.main, .tooltip {
+    font-size: 12px; 
+}
+
+.slider {
+    font-size: 14px; 
+}

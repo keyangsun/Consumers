@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/stylesheets/reset.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/stylesheets/root.css" type="text/css">
     <script src="./dist/main.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <div class="main"></div>
+<body id="root">
+    <div class="content">
+        <div class="title">U.S. Net Energy Consumption by Sector in 1970</div>
+        <div class="header">
+            <div class="legend"></div>
+            <p>A visualization of the net energy consumption of each state in the residential, transportation,
+                commercial and industrial sectors from 1970 to 2016. The unit of measurement is a quad 
+                or a quadrillion british thermal units (BTUs). The Data is taken from the U.S. Energy 
+                Information Administration. 
+            </p>
+        </div>
+        <div class="slider">
+            Year: 
+            <input type="number">
+            <input id="button" type="button" value="Submit">
+        </div>
+        <div class="main"></div>
+    </div>
 </body>
 </html>
