@@ -15,7 +15,7 @@ const keys = ["West Virginia", "Pennsylvania", "Wyoming", "Iowa",
 
 keys.sort(); 
 
-d3.json("/data/data.json")
+d3.json("data/data.json")
     .then( fetchedData => {
         
         const year = 1970; 
