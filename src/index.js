@@ -1,5 +1,9 @@
 import * as d3 from 'd3';
-import { filterByYear, addToolTips, makePieChart, addLegend } from './util';
+import { filterByYear,
+    sortData,  
+    addToolTips, 
+    makePieChart, 
+    addLegend } from './util';
 
 const keys = ["West Virginia", "Pennsylvania", "Wyoming", "Iowa", 
     "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", 
@@ -16,8 +20,6 @@ keys.sort();
 
 d3.json("data/data.json")
     .then( fetchedData => {
-        
-        debugger; 
 
         const year = 1970; 
         keys.forEach( state => {
@@ -48,7 +50,37 @@ d3.json("data/data.json")
             } else {
                 return null; 
             }
-        });  
+        }); 
+        
+        document.querySelector(".asc").addEventListener("click", () => {
+            const currYear = document.querySelector(".title").innerHTML.slice(41);
+            d3.selectAll("svg")
+                .remove();
+            d3.selectAll(".tooltip")
+                .remove();
+            const newKeys = sortData(fetchedData, currYear, "ASC"); 
+            newKeys.forEach(state => {
+                const data = filterByYear(fetchedData[state], currYear, state);
+                makePieChart(data);
+            });
+            addToolTips();
+            addLegend();
+        });
+
+        document.querySelector(".desc").addEventListener("click", () => {
+            const currYear = document.querySelector(".title").innerHTML.slice(41);
+            d3.selectAll("svg")
+                .remove();
+            d3.selectAll(".tooltip")
+                .remove();
+            const newKeys = sortData(fetchedData, currYear, "DESC");
+            newKeys.forEach(state => {
+                const data = filterByYear(fetchedData[state], currYear, state);
+                makePieChart(data);
+            });
+            addToolTips();
+            addLegend();
+        });
         
     });
 

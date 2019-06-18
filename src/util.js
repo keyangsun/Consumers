@@ -143,7 +143,60 @@ export const addLegend = function()  {
         .text(function (d) { return d; });
 };
 
-export const sortAsc = function(keys, fetchedData) {
-    let newKeys; 
+export const sortData = function(fetchedData, year, params = "ASC") {
+    let final = []; 
+    let arr, e, eCom, eRes, eInd, eTrans; 
 
+    const pluckdata = function(sector, state) {
+        let datum = fetchedData[state][sector]["data"]
+            .filter(val => val[0] === year);
+        return datum[0][1];
+    }; 
+
+   
+    for (let state in fetchedData) {
+        if (state !== "District of Columbia" && state !== "United States") {
+            eCom = pluckdata("commercial",state); 
+            eRes = pluckdata("residential", state); 
+            eInd = pluckdata("industrial", state); 
+            eTrans = pluckdata("transportation", state); 
+            e = eCom + eRes + eInd + eTrans; 
+            arr = [state, e]; 
+            final.push(arr); 
+        }
+    }
+
+    final = myQuickSort(final, params); 
+    let newKeys = []; 
+
+    for (let j = 0; j < final.length; j++) {
+        newKeys.push(final[j][0]); 
+    }
+    console.log(newKeys);
+    return newKeys; 
+};
+
+const myQuickSort = function(arr, params = "ASC") {
+    if (arr.length <= 1) return arr; 
+
+    let pivot = arr.pop();
+    let left = [];
+    let right = [];
+
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i][1] >= pivot[1]) {
+            right.push(arr[i]);
+        } else {
+            left.push(arr[i]); 
+        }
+    }
+
+    left = myQuickSort(left, params);
+    right = myQuickSort(right, params); 
+
+    if (params === "ASC") {
+        return left.concat([pivot]).concat(right); 
+    } else {
+        return right.concat([pivot]).concat(left);
+    }
 };
