@@ -54,7 +54,6 @@ export const addToolTips = function () {
 };
 
 export const makePieChart = function(data) {
-    
     const radiusScale = d3.scaleSqrt()
     .domain([0, 11])
     .range([20, 157]); 
@@ -66,9 +65,9 @@ export const makePieChart = function(data) {
         .value( d => d === undefined ? undefined : d.value );
 
     const totalEnergy = eConsumed(data); 
-    const radius = radiusScale(totalEnergy),  
-        // side = radius * 2;
-        side = 295;    
+    const radius = radiusScale(totalEnergy);  
+    // const side = 295;
+    const side = 2 * radius + 85;     
 
     const parent = d3.select(".main");
 
@@ -113,7 +112,7 @@ export const makePieChart = function(data) {
     g.append("text")
         .text(innerText)
         .attr("text-anchor", "middle")
-        .attr("y", `${radius + 10}`);
+        .attr("y", `${radius + 20}`);
 };
 
 export const addLegend = function()  {
@@ -142,4 +141,9 @@ export const addLegend = function()  {
         .attr("y", 9)
         .attr("dy", ".35em")
         .text(function (d) { return d; });
+};
+
+export const sortAsc = function(keys, fetchedData) {
+    let newKeys; 
+
 };
