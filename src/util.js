@@ -112,7 +112,8 @@ export const makePieChart = function(data) {
 
     g.append("text")
         .text(innerText)
-        .attr("text-anchor", "center");
+        .attr("text-anchor", "middle")
+        .attr("y", `${radius + 10}`);
 };
 
 export const addLegend = function()  {
