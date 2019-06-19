@@ -172,7 +172,6 @@ export const sortData = function(fetchedData, year, params = "ASC") {
     for (let j = 0; j < final.length; j++) {
         newKeys.push(final[j][0]); 
     }
-    console.log(newKeys);
     return newKeys; 
 };
 

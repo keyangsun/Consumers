@@ -34,25 +34,32 @@ d3.json("data/data.json")
             const input = document.querySelector("input");
             const newYear = Math.floor(Number(input.value)); 
             if (newYear >= 1970 && newYear <= 2016 ) {
-                d3.selectAll("svg")
-                    .remove();
-                d3.selectAll(".tooltip")
-                    .remove();
-                keys.forEach(state => {
-                    const data = filterByYear(fetchedData[state], newYear, state);
-                    makePieChart(data);
-                });
-                addToolTips();
-                addLegend();
-                input.value = ""; 
                 const title = document.querySelector(".title"); 
-                title.innerHTML = title.innerHTML.slice(0, 40) + " " + newYear; 
+                title.innerHTML = title.innerHTML.slice(0, 40) + " " + newYear;
+                input.value = "";  
+                document.querySelector(".selected").click(); 
             } else {
                 return null; 
             }
         }); 
+
+        document.querySelector(".alph").addEventListener("click", (e) => {
+            const currYear = document.querySelector(".title").innerHTML.slice(41);
+            d3.selectAll("svg")
+                .remove();
+            d3.selectAll(".tooltip")
+                .remove();
+            keys.forEach(state => {
+                const data = filterByYear(fetchedData[state], currYear, state);
+                makePieChart(data);
+            });
+            addToolTips();
+            addLegend();
+            document.querySelector(".selected").classList.remove("selected");
+            e.currentTarget.classList.add("selected"); 
+        });
         
-        document.querySelector(".asc").addEventListener("click", () => {
+        document.querySelector(".asc").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);
             d3.selectAll("svg")
                 .remove();
@@ -65,9 +72,11 @@ d3.json("data/data.json")
             });
             addToolTips();
             addLegend();
+            document.querySelector(".selected").classList.remove("selected");
+            e.currentTarget.classList.add("selected"); 
         });
 
-        document.querySelector(".desc").addEventListener("click", () => {
+        document.querySelector(".desc").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);
             d3.selectAll("svg")
                 .remove();
@@ -80,12 +89,10 @@ d3.json("data/data.json")
             });
             addToolTips();
             addLegend();
+            document.querySelector(".selected").classList.remove("selected");
+            e.currentTarget.classList.add("selected"); 
         });
         
     });
 
-
-
-
-
-
+    

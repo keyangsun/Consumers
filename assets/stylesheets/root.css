@@ -41,3 +41,38 @@ body {
     font-size: 14px;
 }
 
+.fields {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.sort {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+.button {
+    padding: 8px;
+    padding-left: 12px; 
+    padding-right: 12px;
+    margin: 8px;
+    color: rgb(87, 85, 85); 
+    font-weight: 600; 
+    font-size: 14px; 
+}
+
+.button:hover {
+    cursor: pointer; 
+    transition-duration: 0.4s;
+    transition-delay: 0.1s; 
+    color: black; 
+    font-size: 16px;
+}
+
+.selected {
+    color: red; 
+}
