@@ -43,16 +43,47 @@ body {
 
 .fields {
     display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-}
-
-.sort {
-    display: flex; 
     flex-direction: row;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    color: rgb(87, 85, 85); 
+    font-weight: 600; 
+    font-size: 14px; 
+}
+
+.fields > p {
+    margin: 8px; 
+}
+
+input {
+    border: none;  
+    font-size: 14px;  
+    border-bottom: 1px solid black; 
+    padding: 5px; 
+}
+
+input:focus {
+    outline: none; 
+}
+
+form {
+    margin-right: 40px;  
+}
+
+#submit {
+    color: rgb(87, 85, 85); 
+    font-weight: 600; 
+    font-size: 14px; 
+    border: 1px solid rgb(87, 85, 85); 
+    padding: 10px; 
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    border-radius: 16px; 
+}
+
+#submit:hover {
+    cursor: pointer; 
+    color: black;
 }
 
 .button {
@@ -60,9 +91,6 @@ body {
     padding-left: 12px; 
     padding-right: 12px;
     margin: 8px;
-    color: rgb(87, 85, 85); 
-    font-weight: 600; 
-    font-size: 14px; 
 }
 
 .button:hover {
@@ -70,9 +98,8 @@ body {
     transition-duration: 0.4s;
     transition-delay: 0.1s; 
     color: black; 
-    font-size: 16px;
 }
 
 .selected {
-    color: red; 
+    border-bottom: 1px solid black; 
 }
