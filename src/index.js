@@ -94,5 +94,3 @@ d3.json("data/data.json")
         });
         
     });
-
-    
