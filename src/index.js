@@ -51,7 +51,7 @@ Promise.all([
 
         document.querySelector(".alph").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);
-            d3.selectAll("svg")
+            d3.select(".main").selectAll("svg")
                 .remove();
             d3.selectAll(".tooltip")
                 .remove();
@@ -60,14 +60,13 @@ Promise.all([
                 makePieChart(data);
             });
             addToolTips();
-            addLegend();
             document.querySelector(".selected").classList.remove("selected");
             e.currentTarget.classList.add("selected"); 
         });
         
         document.querySelector(".asc").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);
-            d3.selectAll("svg")
+            d3.select(".main").selectAll("svg")
                 .remove();
             d3.selectAll(".tooltip")
                 .remove();
@@ -77,14 +76,13 @@ Promise.all([
                 makePieChart(data);
             });
             addToolTips();
-            addLegend();
             document.querySelector(".selected").classList.remove("selected");
             e.currentTarget.classList.add("selected"); 
         });
 
         document.querySelector(".desc").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);
-            d3.selectAll("svg")
+            d3.select(".main").selectAll("svg")
                 .remove();
             d3.selectAll(".tooltip")
                 .remove();
@@ -94,7 +92,6 @@ Promise.all([
                 makePieChart(data);
             });
             addToolTips();
-            addLegend();
             document.querySelector(".selected").classList.remove("selected");
             e.currentTarget.classList.add("selected"); 
         });
