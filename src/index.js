@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import { makeMap } from './map'; 
 import { filterByYear,
     sortData,  
     addToolTips, 
@@ -18,14 +19,19 @@ const keys = ["West Virginia", "Pennsylvania", "Wyoming", "Iowa",
 
 keys.sort(); 
 
-d3.json("data/data.json")
-    .then( fetchedData => {
+// eslint-disable-next-line no-undef
+Promise.all([
+    d3.json("data/data.json"), 
+    d3.json("https://cdn.jsdelivr.net/npm/us-atlas@2.1.0/us/states-10m.json")
+])
+    .then( ([fetchedData, usMapData]) => {
 
         const year = 1970; 
         keys.forEach( state => {
             const data = filterByYear(fetchedData[state], year, state);
             makePieChart(data); 
         });
+        makeMap(usMapData); 
         addToolTips();
         addLegend(); 
         

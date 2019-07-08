@@ -103,3 +103,12 @@ form {
 .selected {
     border-bottom: 1px solid black; 
 }
+
+.state {
+    fill: #707070; 
+    stroke: #efefef;  
+}
+
+.state:hover {
+    opacity: 0.5;
+}
