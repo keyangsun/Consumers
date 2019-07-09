@@ -28,7 +28,7 @@ export const addToolTips = function () {
         .attr("class", "tooltip")				
         .style("opacity", 0);
 
-    d3.selectAll("path")
+    d3.select('.main').selectAll("path")
         .on("mouseover", (d,i) => {
             div.transition()		
                 .duration(200)		

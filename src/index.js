@@ -24,6 +24,7 @@ Promise.all([
     d3.json("data/data.json"), 
     d3.json("https://cdn.jsdelivr.net/npm/us-atlas@2.1.0/us/states-10m.json")
 ]).then( ([fetchedData, usMapData]) => {
+    
         const year = 1970; 
         keys.forEach( state => {
             const data = filterByYear(fetchedData[state], year, state);
@@ -46,6 +47,20 @@ Promise.all([
                 return null; 
             }
         }); 
+
+        document.querySelector('.map-button').addEventListener("click", e => {
+
+            if (e.currentTarget.classList.value.includes('show')) {
+                document.querySelector('.map').classList.add('show-map'); 
+                e.currentTarget.classList.remove('show'); 
+                e.currentTarget.children[0].innerText = "HIDE CHLOROPLETH MAP"; 
+            } else {
+                document.querySelector('.map').classList.remove('show-map');
+                e.currentTarget.classList.add('show');
+                e.currentTarget.children[0].innerText = "SHOW CHLOROPLETH MAP";
+            }
+
+        });
 
         document.querySelector(".alph").addEventListener("click", (e) => {
             const currYear = document.querySelector(".title").innerHTML.slice(41);

@@ -104,6 +104,22 @@ form {
     border-bottom: 1px solid black; 
 }
 
+.map {
+    padding-top: 20px;
+    padding-bottom: 20px; 
+    width: 950px;
+    height: 0px; 
+    transition-duration: 0.4s; 
+}
+
+.show-map {
+    height: 600px; 
+}
+
+.map-button {
+    margin-top: 45px; 
+}
+
 .state {
     fill: #707070; 
     stroke: #efefef;  
