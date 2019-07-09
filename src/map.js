@@ -1,4 +1,4 @@
-import { select, geoPath, scaleQuantize, schemeBlues } from 'd3';
+import { select, geoPath, scaleQuantize, schemeYlGnBu } from 'd3';
 import { feature } from 'topojson'; 
 import { pluckdata } from './util';  
 
@@ -13,7 +13,7 @@ export const makeMap = function(us, data) {
         stateObjects.geometries[id].properties['eConsumed'] = mapData[name]; 
     }
 
-    const colorScale = scaleQuantize([min - 80000, max], schemeBlues[9]); 
+    const colorScale = scaleQuantize([min - 80000, max], schemeYlGnBu[9]); 
     const map = select('.map');
     const pathGenerator = geoPath();
     const states = feature(us, stateObjects);
