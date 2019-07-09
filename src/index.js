@@ -23,9 +23,7 @@ keys.sort();
 Promise.all([
     d3.json("data/data.json"), 
     d3.json("https://cdn.jsdelivr.net/npm/us-atlas@2.1.0/us/states-10m.json")
-])
-    .then( ([fetchedData, usMapData]) => {
-
+]).then( ([fetchedData, usMapData]) => {
         const year = 1970; 
         keys.forEach( state => {
             const data = filterByYear(fetchedData[state], year, state);
