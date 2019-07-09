@@ -107,7 +107,10 @@ export const makePieChart = function(data) {
         });
         
 
-    const innerText = data[0].name.toUpperCase() + " " + totalEnergy + " quad"; 
+    let innerText = data[0].name.toUpperCase() + " " + totalEnergy + " quad"; 
+    if (innerText.includes("COLUMBIA")) {
+        innerText = "D.C. " + innerText.slice(20); 
+    }
 
     g.append("text")
         .text(innerText)
@@ -143,23 +146,22 @@ export const addLegend = function()  {
         .text(function (d) { return d; });
 };
 
+export const pluckdata = function (sector, state, fetchedData, year) {
+    let datum = fetchedData[state][sector]["data"]
+        .filter(val => val[0] === year);
+    return datum[0][1];
+}; 
+
 export const sortData = function(fetchedData, year, params = "ASC") {
     let final = []; 
-    let arr, e, eCom, eRes, eInd, eTrans; 
-
-    const pluckdata = function(sector, state) {
-        let datum = fetchedData[state][sector]["data"]
-            .filter(val => val[0] === year);
-        return datum[0][1];
-    }; 
-
+    let arr, e, eCom, eRes, eInd, eTrans;
    
     for (let state in fetchedData) {
-        if (state !== "District of Columbia" && state !== "United States") {
-            eCom = pluckdata("commercial",state); 
-            eRes = pluckdata("residential", state); 
-            eInd = pluckdata("industrial", state); 
-            eTrans = pluckdata("transportation", state); 
+        if (state !== "United States") {
+            eCom = pluckdata("commercial",state, fetchedData, year); 
+            eRes = pluckdata("residential", state, fetchedData, year); 
+            eInd = pluckdata("industrial", state, fetchedData, year); 
+            eTrans = pluckdata("transportation", state, fetchedData, year); 
             e = eCom + eRes + eInd + eTrans; 
             arr = [state, e]; 
             final.push(arr); 

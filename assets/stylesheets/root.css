@@ -105,8 +105,8 @@ form {
 }
 
 .map {
-    padding-top: 20px;
-    padding-bottom: 20px; 
+    margin-top: 15px;
+    margin-bottom: 15px; 
     width: 950px;
     height: 0px; 
     transition-duration: 0.4s; 
@@ -121,7 +121,6 @@ form {
 }
 
 .state {
-    fill: #707070; 
     stroke: #efefef;  
 }
 

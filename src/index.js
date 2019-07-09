@@ -15,7 +15,7 @@ const keys = ["West Virginia", "Pennsylvania", "Wyoming", "Iowa",
     "Ohio", "Oklahoma", "Oregon", "South Carolina", "Tennessee", 
     "South Dakota", "Texas", "Utah", "Virginia", "Vermont", "Washington", 
     "Wisconsin", "Arizona", "California", "Colorado", "Connecticut", 
-    "Georgia", "Florida", "Hawaii", "Delaware"]; 
+    "Georgia", "Florida", "Hawaii", "Delaware","District of Columbia"]; 
 
 keys.sort(); 
 
@@ -29,7 +29,7 @@ Promise.all([
             const data = filterByYear(fetchedData[state], year, state);
             makePieChart(data); 
         });
-        makeMap(usMapData); 
+        makeMap(usMapData, fetchedData); 
         addToolTips();
         addLegend(); 
         
@@ -41,6 +41,8 @@ Promise.all([
                 const title = document.querySelector(".title"); 
                 title.innerHTML = title.innerHTML.slice(0, 40) + " " + newYear;
                 input.value = "";  
+                d3.select(".map").selectAll("path").remove();
+                makeMap(usMapData, fetchedData); 
                 document.querySelector(".selected").click(); 
             } else {
                 return null; 
