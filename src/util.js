@@ -29,9 +29,9 @@ export const addToolTips = function () {
         .style("opacity", 0);
 
     d3.select('.main').selectAll("path")
-        .on("mouseover", (d,i) => {
+        .on("mouseover", d => {
             div.transition()		
-                .duration(200)		
+                .duration(120)		
                 .style("opacity", .9)
                 .style("background-color", "#efefef")
                 .style("border-radius", "3px")	
@@ -46,7 +46,7 @@ export const addToolTips = function () {
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY) + "px");
         })
-        .on("mouseout", (d,i) => {
+        .on("mouseout", () => {
             div.transition()		
                 .duration(500)		
                 .style("opacity", 0);
